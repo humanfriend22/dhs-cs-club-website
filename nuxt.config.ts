@@ -11,6 +11,9 @@ export default defineNuxtConfig({
             tailwindcss(),
         ],
     },
+    nitro: {
+        preset: "vercel-static",
+    },
     app: {
         head: {
             link: [{
