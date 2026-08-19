@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Avery Rodriguez",
+    "date": "2026-03-10",
+    "description": "Shipped a Dublin BART shuttle tracker and taught two full workshops on Git this year.",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/" },
+      { "label": "Project demo", "url": "https://example.com/" }
+    ]
+  },
+  {
+    "name": "Jordan Lee",
+    "date": "2026-02-17",
+    "description": "Maintains the club website repo and reviewed over 30 pull requests from first-time contributors.",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/" }
+    ]
+  },
+  {
+    "name": "Maya Krishnan",
+    "date": "2025-11-04",
+    "description": "Joined having never coded and shipped a working project by her third meeting.",
+    "links": [
+      { "label": "Project demo", "url": "https://example.com/" }
+    ]
+  }
+]
