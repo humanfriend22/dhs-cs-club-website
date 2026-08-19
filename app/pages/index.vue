@@ -5,7 +5,7 @@ import { Code2, Cpu, Trophy, Users, Sparkles, Rocket } from "lucide-vue-next";
 <template>
     <div class="container px-0 flex flex-col gap-4">
         <section class="relative overflow-hidden">
-            <div style="background-image: url('hero.jpeg')" class="absolute inset-0 bg-cover bg-center opacity-30" />
+            <div style="background-image: url('hero.jpeg')" class="absolute inset-0 bg-cover bg-center opacity-30 border-[0.5] border-slate-500 rounded-lg" />
             <div class="container mx-auto px-4 py-24 md:py-32 relative z-10">
                 <div class="max-w-4xl mx-auto text-center">
                     <div class="inline-block mb-6 px-4 py-2 bg-hackclub-red/10 rounded-full">

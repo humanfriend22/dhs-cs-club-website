@@ -3,7 +3,8 @@
         <div class="container mx-auto px-8 bg-nav/95 backdrop-blur-sm shadow-lg rounded-lg">
             <div class="flex flex-col justify-center">
                 <div class="flex items-center justify-between h-16">
-                    <div>
+                    <div class="flex flex-row items-center gap-3">
+                        <NuxtImg src="dhscomputersciencelogo.png" class="w-15 mask-circle" />
                         <h1 class="text-gradient-primary text-2xl">Dublin Computer Science Club</h1>
                     </div>
                     <div>

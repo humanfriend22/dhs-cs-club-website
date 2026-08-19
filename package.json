@@ -22,5 +22,9 @@
   },
   "devDependencies": {
     "daisyui": "^5.1.10"
-  }
+  },
+  "trustedDependencies": [
+    "@parcel/watcher",
+    "@tailwindcss/oxide"
+  ]
 }
