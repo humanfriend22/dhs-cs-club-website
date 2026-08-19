@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { scheduleTbdNote } from '~/data/club'
 import { hasSchedule, nextEvent } from '~/utils/schedule'
 
 const countdownTarget = hasSchedule && nextEvent?.datetime ? new Date(nextEvent.datetime) : null
@@ -7,20 +6,19 @@ const { remaining } = countdownTarget ? useCountdown(countdownTarget) : { remain
 </script>
 
 <template>
-  <div v-if="hasSchedule && nextEvent" style="position: relative; margin: 22px 26px 26px; border: 1px solid var(--ink); background: var(--bg); padding: 16px 18px;">
-    <div style="font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--mut);">Kickoff meeting in</div>
-    <div v-if="remaining" style="display: flex; gap: 16px; margin-top: 10px; align-items: baseline;">
-      <div><span style="font-size: 26px; font-weight: 700; color: var(--ink);">{{ remaining.d }}</span><span style="font-size: 11px; color: var(--mut);">d</span></div>
-      <div><span style="font-size: 26px; font-weight: 700; color: var(--ink);">{{ remaining.h }}</span><span style="font-size: 11px; color: var(--mut);">h</span></div>
-      <div><span style="font-size: 26px; font-weight: 700; color: var(--ink);">{{ remaining.m }}</span><span style="font-size: 11px; color: var(--mut);">m</span></div>
-      <div><span style="font-size: 26px; font-weight: 700; color: var(--acc);">{{ remaining.s }}</span><span style="font-size: 11px; color: var(--mut);">s</span></div>
-      <span style="margin-left: auto; font-size: 11px; color: var(--mut);">{{ nextEvent.date }} · {{ nextEvent.time }}</span>
+  <div v-if="hasSchedule && nextEvent" class="relative mt-[22px] mx-[26px] mb-[26px] border border-ink bg-bg py-4 px-[18px]">
+    <div class="text-[10px] tracking-[.12em] uppercase text-mut">Next meeting</div>
+    <div v-if="remaining" class="flex gap-4 mt-2.5 items-baseline">
+      <div><span class="text-[26px] font-bold text-ink">{{ remaining.d }}</span><span class="text-[11px] text-mut">d</span></div>
+      <div><span class="text-[26px] font-bold text-ink">{{ remaining.h }}</span><span class="text-[11px] text-mut">h</span></div>
+      <div><span class="text-[26px] font-bold text-ink">{{ remaining.m }}</span><span class="text-[11px] text-mut">m</span></div>
+      <div><span class="text-[26px] font-bold text-acc">{{ remaining.s }}</span><span class="text-[11px] text-mut">s</span></div>
+      <span class="ml-auto text-[11px] text-mut">{{ nextEvent.date }} · {{ nextEvent.time }}</span>
     </div>
-    <div v-else style="margin-top: 10px; font-size: 15px; font-weight: 700; color: var(--ink);">{{ nextEvent.date }} · {{ nextEvent.time }}</div>
+    <div v-else class="mt-2.5 text-[15px] font-bold text-ink">{{ nextEvent.date }} · {{ nextEvent.time }}</div>
   </div>
-  <div v-else style="position: relative; margin: 22px 26px 26px; border: 1px solid var(--line); background: var(--bg); padding: 16px 18px;">
-    <div style="font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--mut);">Kickoff meeting</div>
-    <div style="margin-top: 10px; font-size: 15px; font-weight: 700; color: var(--ink);">Schedule to be determined</div>
-    <div style="margin-top: 6px; font-size: 12px; line-height: 1.6; color: var(--tx2);">{{ scheduleTbdNote }}</div>
+  <div v-else class="relative mt-[22px] mx-[26px] mb-[26px] border border-line bg-bg py-4 px-[18px]">
+    <div class="text-[10px] tracking-[.12em] uppercase text-mut">Next meeting</div>
+    <div class="mt-2.5 text-[15px] font-bold text-ink">Schedule to be determined</div>
   </div>
 </template>

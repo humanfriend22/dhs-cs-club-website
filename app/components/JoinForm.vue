@@ -19,131 +19,68 @@ function onSubmit() {
 </script>
 
 <template>
-  <form style="display: flex; flex-direction: column; gap: 24px; margin-top: 32px; max-width: 620px;" @submit.prevent="onSubmit">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 14px;">
-      <label style="display: flex; flex-direction: column; gap: 7px;">
-        <span style="font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--mut);">Full name</span>
-        <input v-model="name" type="text" placeholder="avery rodriguez" class="field">
+  <form class="flex flex-col gap-6 mt-8 max-w-[620px]" @submit.prevent="onSubmit">
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(min(200px,100%),1fr))] gap-3.5">
+      <label class="flex flex-col gap-[7px]">
+        <span class="text-[10px] tracking-[.12em] uppercase text-mut">Full name</span>
+        <input v-model="name" type="text" placeholder="avery rodriguez" class="font-jetbrains text-sm text-ink bg-bg2 border border-line p-3 outline-none w-full min-w-0 focus:border-acc">
       </label>
-      <label style="display: flex; flex-direction: column; gap: 7px;">
-        <span style="font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--mut);">School email</span>
-        <input v-model="email" type="email" placeholder="you@dublinusd.org" class="field">
+      <label class="flex flex-col gap-[7px]">
+        <span class="text-[10px] tracking-[.12em] uppercase text-mut">School email</span>
+        <input v-model="email" type="email" placeholder="you@dublinusd.org" class="font-jetbrains text-sm text-ink bg-bg2 border border-line p-3 outline-none w-full min-w-0 focus:border-acc">
       </label>
     </div>
 
-    <div style="display: flex; flex-direction: column; gap: 9px;">
-      <span style="font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--mut);">Grade</span>
-      <div style="display: flex; gap: 8px;">
+    <div class="flex flex-col gap-[9px]">
+      <span class="text-[10px] tracking-[.12em] uppercase text-mut">Grade</span>
+      <div class="flex gap-2">
         <button
           v-for="g in grades"
           :key="g"
           type="button"
-          class="grade-btn"
-          :class="{ active: grade === g }"
+          class="flex-1 text-[13px] font-bold py-[13px] cursor-pointer min-h-11 border"
+          :class="grade === g ? 'text-bg bg-ink border-ink' : 'text-tx2 bg-bg2 border-line'"
           @click="grade = g"
         >{{ g }}</button>
       </div>
     </div>
 
-    <div style="display: flex; flex-direction: column; gap: 9px;">
-      <span style="font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--mut);">Experience</span>
-      <div style="display: flex; flex-direction: column; gap: 7px;">
+    <div class="flex flex-col gap-[9px]">
+      <span class="text-[10px] tracking-[.12em] uppercase text-mut">Experience</span>
+      <div class="flex flex-col gap-[7px]">
         <button
           v-for="l in levels"
           :key="l.label"
           type="button"
-          class="level-btn"
-          :class="{ active: level === l.label }"
+          class="flex items-center gap-[11px] text-left text-[13px] text-ink bg-bg2 border p-[13px] cursor-pointer min-h-11"
+          :class="level === l.label ? 'border-acc' : 'border-line'"
           @click="level = l.label"
         >
-          <span class="dot" :class="{ active: level === l.label }" />
-          <span style="font-weight: 700;">{{ l.label }}</span>
-          <span style="color: var(--mut); font-size: 12px;">{{ l.hint }}</span>
+          <span
+            class="w-[13px] h-[13px] flex-none border"
+            :class="level === l.label ? 'border-acc bg-acc' : 'border-mut bg-transparent'"
+          />
+          <span class="font-bold">{{ l.label }}</span>
+          <span class="text-mut text-xs">{{ l.hint }}</span>
         </button>
       </div>
     </div>
 
-    <div style="display: flex; flex-direction: column; gap: 9px;">
-      <span style="font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--mut);">Interests — pick any</span>
-      <div style="display: flex; flex-wrap: wrap; gap: 7px;">
+    <div class="flex flex-col gap-[9px]">
+      <span class="text-[10px] tracking-[.12em] uppercase text-mut">Interests — pick any</span>
+      <div class="flex flex-wrap gap-[7px]">
         <button
           v-for="i in interests"
           :key="i"
           type="button"
-          class="interest-btn"
-          :class="{ active: picks.includes(i) }"
+          class="text-xs border py-2.5 px-3 cursor-pointer min-h-10 whitespace-nowrap"
+          :class="picks.includes(i) ? 'text-ink bg-bg3 border-ink' : 'text-tx2 bg-bg2 border-line'"
           @click="toggleInterest(i)"
         >{{ picks.includes(i) ? '[x] ' : '[ ] ' }}{{ i }}</button>
       </div>
     </div>
 
     <AppButton type="submit" variant="primary" block>SUBMIT →</AppButton>
-    <p style="margin: 0; font-size: 11px; color: var(--mut);">Your email is used for meeting reminders only.</p>
+    <p class="m-0 text-[11px] text-mut">Your email is used for meeting reminders only.</p>
   </form>
 </template>
-
-<style scoped>
-.field {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
-  color: var(--ink);
-  background: var(--bg2);
-  border: 1px solid var(--line);
-  padding: 12px;
-  outline: none;
-  width: 100%;
-  min-width: 0;
-}
-.field:focus { border-color: var(--acc); background: var(--bg2); }
-
-.grade-btn {
-  flex: 1;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--tx2);
-  background: var(--bg2);
-  border: 1px solid var(--line);
-  padding: 13px 0;
-  cursor: pointer;
-  min-height: 44px;
-}
-.grade-btn.active { color: var(--bg); background: var(--ink); border-color: var(--ink); }
-
-.level-btn {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  text-align: left;
-  font-family: inherit;
-  font-size: 13px;
-  color: var(--ink);
-  background: var(--bg2);
-  border: 1px solid var(--line);
-  padding: 13px;
-  cursor: pointer;
-  min-height: 44px;
-}
-.level-btn.active { border-color: var(--acc); }
-.level-btn .dot {
-  width: 13px;
-  height: 13px;
-  flex: none;
-  border: 1px solid var(--mut);
-  background: transparent;
-}
-.level-btn .dot.active { border-color: var(--acc); background: var(--acc); }
-
-.interest-btn {
-  font-family: inherit;
-  font-size: 12px;
-  color: var(--tx2);
-  background: var(--bg2);
-  border: 1px solid var(--line);
-  padding: 10px 12px;
-  cursor: pointer;
-  min-height: 40px;
-  white-space: nowrap;
-}
-.interest-btn.active { color: var(--ink); background: var(--bg3); border-color: var(--ink); }
-</style>

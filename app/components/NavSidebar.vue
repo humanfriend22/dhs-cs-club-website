@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { X } from 'lucide-vue-next'
 import { scheduleTbdNote } from '~/data/club'
 import { hasSchedule, nextEvent } from '~/utils/schedule'
 
@@ -18,142 +19,63 @@ function isActive(to: string) {
 </script>
 
 <template>
-  <div class="backdrop" :class="{ open: drawerOpen }" @click="closeDrawer" />
+  <div
+    class="hidden max-[780px]:block fixed inset-0 z-40 bg-black/50 transition-opacity duration-[250ms] ease-linear"
+    :class="drawerOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'"
+    @click="closeDrawer"
+  />
 
-  <aside class="sidebar" :class="{ open: drawerOpen }">
-    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <img src="/dhs-cs-logo.png" alt="DHS CS Club" style="width: 36px; height: 36px; border-radius: 4px;">
-        <div style="line-height: 1.25;">
-          <div style="font-size: 13px; font-weight: 700; color: var(--ink); letter-spacing: -.02em;">dhs-cs-club</div>
-          <div style="font-size: 10px; color: var(--mut); letter-spacing: .04em;">dublin high school</div>
+  <aside
+    class="border-r border-line py-5 px-[18px] flex flex-col gap-[22px] sticky top-0 h-screen bg-bg max-[780px]:fixed max-[780px]:top-0 max-[780px]:left-0 max-[780px]:w-[260px] max-[780px]:max-w-[82vw] max-[780px]:z-50 max-[780px]:transition-transform max-[780px]:duration-[250ms] max-[780px]:ease-[cubic-bezier(.16,.84,.24,1)] max-[780px]:shadow-[2px_0_24px_rgba(0,0,0,.25)]"
+    :class="drawerOpen ? 'max-[780px]:translate-x-0' : 'max-[780px]:-translate-x-full'"
+  >
+    <div class="flex items-center justify-between gap-2.5">
+      <div class="flex items-center gap-2.5">
+        <img src="/dhs-cs-logo.png" alt="DHS CS Club" class="w-9 h-9 rounded">
+        <div class="leading-[1.25]">
+          <div class="text-[13px] font-bold text-ink tracking-[-.02em]">dhs-cs-club</div>
+          <div class="text-[10px] text-mut tracking-[.04em]">dublin high school</div>
         </div>
       </div>
-      <button class="close-btn" aria-label="Close menu" @click="closeDrawer">✕</button>
+      <button
+        class="hidden max-[780px]:flex items-center justify-center w-7 h-7 flex-none text-sm text-tx2 bg-transparent border border-line cursor-pointer hover:text-ink hover:border-ink"
+        aria-label="Close menu"
+        @click="closeDrawer"
+      >
+        <X :size="16" />
+      </button>
     </div>
 
-    <div style="border: 1px solid var(--line); background: var(--bg2); padding: 11px 12px;">
-      <div style="display: flex; align-items: center; gap: 7px; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--mut);">
-        <span :style="{ width: '6px', height: '6px', background: hasSchedule ? 'var(--ok)' : 'var(--warn)', borderRadius: '50%' }" />{{ hasSchedule ? 'Next meeting' : 'Schedule' }}
+    <div class="border border-line bg-bg2 py-[11px] px-3">
+      <div class="flex items-center gap-[7px] text-[10px] tracking-[.1em] uppercase text-mut">
+        <span class="w-1.5 h-1.5 rounded-full" :class="hasSchedule ? 'bg-ok' : 'bg-warn'" />{{ hasSchedule ? 'Next meeting' : 'Schedule' }}
       </div>
       <template v-if="hasSchedule && nextEvent">
-        <div style="margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--ink);">{{ nextEvent.date }} · {{ nextEvent.time }}</div>
-        <div style="margin-top: 3px; font-size: 11px; color: var(--tx2);">{{ nextEvent.where }}</div>
+        <div class="mt-2 text-[13px] font-bold text-ink">{{ nextEvent.date }} · {{ nextEvent.time }}</div>
+        <div class="mt-[3px] text-[11px] text-tx2">{{ nextEvent.where }}</div>
       </template>
       <template v-else>
-        <div style="margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--ink);">To be determined</div>
-        <div style="margin-top: 3px; font-size: 11px; color: var(--tx2);">{{ scheduleTbdNote }}</div>
+        <div class="mt-2 text-[13px] font-bold text-ink">To be determined</div>
+        <div class="mt-[3px] text-[11px] text-tx2">{{ scheduleTbdNote }}</div>
       </template>
     </div>
 
-    <nav style="display: flex; flex-direction: column; gap: 2px;">
+    <nav class="flex flex-col gap-0.5">
       <NuxtLink
         v-for="link in links"
         :key="link.to"
         :to="link.to"
-        class="nav-link"
+        class="flex items-center gap-[9px] text-left text-[13px] bg-transparent border-0 border-l-2 border-transparent py-[11px] px-2.5 min-h-11 text-tx2 hover:bg-bg3 hover:text-ink"
+        :class="{ 'text-ink': isActive(link.to) }"
         @click="closeDrawer"
       >
-        <span style="color: var(--acc);">{{ isActive(link.to) ? '▸ ' : '  ' }}</span>{{ link.label }}
+        <span class="text-acc">{{ isActive(link.to) ? '▸ ' : '  ' }}</span>{{ link.label }}
       </NuxtLink>
     </nav>
 
-    <div style="margin-top: auto; display: flex; flex-direction: column; gap: 7px; font-size: 10px; color: var(--mut); letter-spacing: .04em;">
-      <div style="border-top: 1px solid var(--line); padding-top: 12px;">HACK CLUB CHAPTER</div>
+    <div class="mt-auto flex flex-col gap-[7px] text-[10px] text-mut tracking-[.04em]">
+      <div class="border-t border-line pt-3">HACK CLUB CHAPTER</div>
       <div>advisor: ms. navarro</div>
     </div>
   </aside>
 </template>
-
-<style scoped>
-.sidebar {
-  border-right: 1px solid var(--line);
-  padding: 20px 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  background: var(--bg);
-}
-
-.close-btn {
-  display: none;
-}
-
-.backdrop {
-  display: none;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  text-align: left;
-  font-family: inherit;
-  font-size: 13px;
-  background: none;
-  border: 0;
-  border-left: 2px solid transparent;
-  border-bottom: none;
-  padding: 11px 10px;
-  color: var(--tx2);
-  min-height: 44px;
-}
-.nav-link:hover {
-  background: var(--bg3);
-  color: var(--ink);
-}
-.nav-link.router-link-exact-active {
-  color: var(--ink);
-}
-
-@media (max-width: 780px) {
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 260px;
-    max-width: 82vw;
-    z-index: 50;
-    transform: translateX(-100%);
-    transition: transform .25s cubic-bezier(.16, .84, .24, 1);
-    box-shadow: 2px 0 24px rgba(0, 0, 0, .25);
-  }
-  .sidebar.open {
-    transform: translateX(0);
-  }
-
-  .close-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    flex: none;
-    font-family: inherit;
-    font-size: 14px;
-    color: var(--tx2);
-    background: transparent;
-    border: 1px solid var(--line);
-    cursor: pointer;
-  }
-  .close-btn:hover { color: var(--ink); border-color: var(--ink); }
-
-  .backdrop {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .5);
-    z-index: 40;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .25s ease;
-  }
-  .backdrop.open {
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
-</style>

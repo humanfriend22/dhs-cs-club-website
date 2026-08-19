@@ -5,48 +5,48 @@ export const headlineWords = ['games,', 'apps,', 'projects,', 'weird stuff,',]
 export const doList = [
   {
     title: 'Hack Club',
-    body: 'YSWS — "you ship, we ship." Build something, get it shipped, and earn rewards.'
+    body: 'YSWS — "you ship, we ship." Build something, get it shipped, and earn rewards.',
+    icon: 'rocket'
   },
   {
     title: 'Hackathon teams',
-    body: 'Form teams with people in this club and compete at hackathons around the Bay Area. Practice at club-hosted mock hackathons.'
+    body: 'Form teams with people in this club and compete at hackathons around the Bay Area. Practice at club-hosted mock hackathons.',
+    icon: 'users'
   },
   {
     title: 'Mini projects',
-    body: 'Small projects built in one lunch period that you can use.'
+    body: 'Small projects built in one lunch period that you can use.',
+    icon: 'wrench'
   }
 ]
 
 export const facts = [
-  { title: 'Bi-monthly meetings', body: 'Meeting time TBD.' },
-  { title: 'No experience needed', body: 'Half the room starts from zero.' },
-  { title: 'Hack Club chapter', body: 'Hardware grants and hackathon travel.' },
-  { title: 'Free to join', body: 'No need for a powerful computer. Bring what you have.' }
-]
-
-export const stats = [
-  { value: '118', label: 'Members' },
-  { value: '18', label: 'Meetings a year' },
-  { value: '6', label: 'Events last year' },
-  { value: '0', label: 'Dues, in dollars' }
-]
-
-export const pillars = [
   {
     title: 'Biweekly meetings',
-    body: 'Alternating workshops and build sessions, every other Tuesday in D-204. Each one is self-contained, so joining in November works fine.'
+    body: 'Workshops & build sessions. Build fun, unique projects of your choice.'
   },
   {
     title: 'Honor Hall',
-    body: 'Officers add standout members for shipping, mentoring, and teaching — a record of what you actually did, not how long you sat in a room.'
+    body: 'Get added to the Honor Hall for shipping, mentoring, and teaching. And increase your chances at board positions...'
   },
   {
     title: 'After-school events',
-    body: 'Hack nights, game jams, guest engineers from around the Tri-Valley, and Congressional App Challenge prep sessions.'
+    body: 'Attend hackathons, club-only mock hackathons (small prizes...), or after school workshops.'
   },
+  {
+    title: 'Hack Club',
+    body: "We're a Hack Club chapter — hardware grants and hackathon travel."
+  }
 ]
 
 export const sponsors: { name: string; url?: string }[] = []
+
+export const socials = [
+  { name: 'Discord', icon: 'discord', url: '', color: '#5865F2' },
+  { name: 'Instagram', icon: 'instagram', url: '', color: '#E4405F' },
+]
+
+export const contactEmail = ''
 
 export const steps = [
   { n: '1', title: 'We email you once', body: 'A short note with the next meeting date and where D-204 actually is.' },

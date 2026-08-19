@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
+
   app: {
     head: {
       title: 'DHS CS Club',
@@ -12,5 +13,7 @@ export default defineNuxtConfig({
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap' }
       ]
     }
-  }
+  },
+
+  modules: ['@nuxtjs/tailwindcss']
 })
