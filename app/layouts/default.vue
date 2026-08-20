@@ -28,7 +28,7 @@ watch(drawerOpen, (isOpen) => {
 
       <footer class="flex-none border-t border-line py-[0.9375rem] px-[1.875rem] flex justify-between gap-4 flex-wrap text-[0.625rem] tracking-[.1em] text-mut">
         <span>stay fly, dublin high</span>
-        <span>{{ $config.public.GIT_COMMIT.slice(0, 7) }}</span>
+        <span>{{ $config.public.GIT_COMMIT }}</span>
       </footer>
     </div>
   </div>
