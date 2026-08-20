@@ -11,7 +11,7 @@ const socialIcons: Record<string, Component> = { discord: MessageCircle, instagr
     <section class="grid grid-cols-[repeat(auto-fit,minmax(min(430px,100%),1fr))] border-b border-line">
       <div class="py-[var(--py-section)] px-[1.875rem] border-r border-line">
         <div class="up u1 text-[0.6875rem] tracking-[.14em] uppercase text-mut">// computer science club</div>
-        <h1 class="up u2 mt-[1rem] text-[clamp(26px,3vw,40px)] leading-[1.15] font-bold tracking-[-.04em] text-ink max-w-[20em]">
+        <h1 class="up u2 mt-[1rem] text-2xl lg:text-4xl leading-[1.15] font-bold tracking-[-.04em] text-ink max-w-[20em]">
           A club for building<br>
           <span class="inline-block h-[1.15em] overflow-hidden align-bottom">
             <span class="cycle block">
@@ -32,8 +32,8 @@ const socialIcons: Record<string, Component> = { discord: MessageCircle, instagr
       </div>
     </section>
 
-    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-b border-line">
-      <div v-for="f in facts" :key="f.title" class="py-[var(--py-section)] px-6 shadow-[1px_0_0_var(--line)]">
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 ">
+      <div v-for="f in facts" :key="f.title" class="py-[var(--py-section)] px-6 shadow-[1px_0_0_var(--line)] border-b border-line">
         <div class="text-sm font-bold text-ink tracking-[-.02em]">{{ f.title }}</div>
         <div class="mt-1.5 font-jetbrains text-xs leading-[1.5] text-tx2">{{ f.body }}</div>
       </div>

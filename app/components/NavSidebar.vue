@@ -19,15 +19,15 @@ function isActive(to: string) {
 </script>
 
 <template>
-  <div
-    class="hidden max-[780px]:block fixed inset-0 z-40 bg-black/50 transition-opacity duration-[250ms] ease-linear"
+   <div
+    class="block lg:hidden fixed inset-0 z-40 bg-black/50 transition-opacity duration-300 ease-linear"
     :class="drawerOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'"
     @click="closeDrawer"
   />
 
   <aside
-    class="border-r border-line py-5 px-[1.125rem] flex flex-col gap-[1.375rem] sticky top-0 h-screen bg-bg max-[780px]:fixed max-[780px]:top-0 max-[780px]:left-0 max-[780px]:w-[16.25rem] max-[780px]:max-w-[82vw] max-[780px]:z-50 max-[780px]:transition-transform max-[780px]:duration-[250ms] max-[780px]:ease-[cubic-bezier(.16,.84,.24,1)] max-[780px]:shadow-[2px_0_24px_rgba(0,0,0,.25)]"
-    :class="drawerOpen ? 'max-[780px]:translate-x-0' : 'max-[780px]:-translate-x-full'"
+    class="fixed lg:sticky top-0 left-0 z-50 lg:z-auto h-screen w-64 max-w-[82vw] lg:max-w-none border-r border-line bg-bg py-5 px-[1.125rem] flex flex-col gap-[1.375rem] transition-transform lg:transition-none duration-300 ease-out shadow-2xl lg:shadow-none -translate-x-full lg:translate-x-0"
+    :class="drawerOpen && 'translate-x-0'"
   >
     <div class="flex items-center justify-between gap-2.5">
       <div class="flex items-center gap-2.5">
@@ -38,7 +38,7 @@ function isActive(to: string) {
         </div>
       </div>
       <button
-        class="hidden max-[780px]:flex items-center justify-center w-7 h-7 flex-none text-sm text-tx2 bg-transparent border border-line cursor-pointer hover:text-ink hover:border-ink"
+        class="flex lg:hidden items-center justify-center w-7 h-7 flex-none text-sm text-tx2 bg-transparent border border-line cursor-pointer hover:text-ink hover:border-ink"
         aria-label="Close menu"
         @click="closeDrawer"
       >

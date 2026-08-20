@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   runtimeConfig: {
     public: {
-      GIT_COMMIT:""
+      GIT_COMMIT: process.env?.['NUXT_ENV_VERCEL_GIT_COMMIT_SHA'] || ''
     }
   },
   app: {

@@ -16,7 +16,7 @@ watch(drawerOpen, (isOpen) => {
 </script>
 
 <template>
-  <div :data-theme="theme" class="h-screen overflow-hidden grid grid-rows-[100vh] grid-cols-[246px_minmax(0,1fr)] max-[780px]:grid-cols-[minmax(0,1fr)] bg-bg text-tx font-mono antialiased">
+  <div :data-theme="theme" class="h-screen overflow-hidden grid grid-rows-[1fr] grid-cols-1 lg:grid-cols-[16rem_1fr] bg-bg text-tx font-mono antialiased">
     <NavSidebar />
 
     <div class="min-w-0 min-h-0 flex flex-col h-full">
@@ -26,9 +26,9 @@ watch(drawerOpen, (isOpen) => {
         <slot />
       </div>
 
-      <footer class="flex-none border-t border-line py-[0.9375rem] px-[1.875rem] flex justify-between gap-4 flex-wrap text-[0.625rem] tracking-[.1em]  text-mut">
+      <footer class="flex-none border-t border-line py-[0.9375rem] px-[1.875rem] flex justify-between gap-4 flex-wrap text-[0.625rem] tracking-[.1em] text-mut">
         <span>stay fly, dublin high</span>
-        <span>{{ $config.public.GIT_COMMIT }}</span>
+        <span>{{ $config.public.GIT_COMMIT.slice(0, 7) }}</span>
       </footer>
     </div>
   </div>
