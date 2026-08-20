@@ -12,6 +12,18 @@
   --acc: #E8837B; --accH: #F5ACA5; --ok: #4ED96A; --link: #5EC5EC; --warn: #E8A33C;
 }
 
+html {
+  /* Fluid root size: every rem-based Tailwind utility (spacing, type, sizing)
+     scales off this, so the whole layout scales with the viewport instead of
+     staying pinned to fixed px. Uses vmin so a short-but-wide window shrinks
+     things too, keeping the no-scroll desktop layout intact. */
+  font-size: clamp(0.875rem, 0.5rem + 0.9vmin, 1.125rem);
+  /* Section block padding scales with viewport height so tall screens keep
+     the spacious feel while short screens compress enough to avoid a
+     vertical scrollbar on the overview page. */
+  --py-section: clamp(0.75rem, 3.4vh, 2rem);
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -54,15 +66,6 @@ a:hover { color: var(--acc); border-bottom-color: rgba(176, 65, 60, .5); }
 
 @keyframes tickerRev { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 .ticker-rev { animation: tickerRev 26s linear infinite; }
-
-.row:hover { background: var(--bg); }
-.row:hover .mark { transform: translateX(4px); }
-
-@keyframes rowIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
-.row { animation: rowIn .5s cubic-bezier(.16, .84, .24, 1) both; }
-.row:nth-child(1) { animation-delay: .18s; }
-.row:nth-child(2) { animation-delay: .3s; }
-.row:nth-child(3) { animation-delay: .42s; }
 
 @keyframes cycle {
   0%, 17% { transform: translateY(0); }

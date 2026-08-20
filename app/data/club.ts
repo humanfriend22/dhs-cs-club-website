@@ -1,6 +1,6 @@
 export const scheduleTbdNote = `Schedule TBD — we're still working out the details.`
 
-export const headlineWords = ['games,', 'apps,', 'projects,', 'weird stuff,',]
+export const headlineWords = ['games,', 'apps,', 'projects,', 'stuff,']
 
 export const doList = [
   {
@@ -42,11 +42,11 @@ export const facts = [
 export const sponsors: { name: string; url?: string }[] = []
 
 export const socials = [
-  { name: 'Discord', icon: 'discord', url: '', color: '#5865F2' },
-  { name: 'Instagram', icon: 'instagram', url: '', color: '#E4405F' },
+  { name: 'Discord', icon: 'discord', url: 'https://discord.gg/QWVXym8pw6', color: '#5865F2' },
+  { name: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/dublinhighcs', color: '#E4405F' },
 ]
 
-export const contactEmail = ''
+export const contactEmail = 'dublincomputerscienceclub@gmail.com'
 
 export const steps = [
   { n: '1', title: 'We email you once', body: 'A short note with the next meeting date and where D-204 actually is.' },

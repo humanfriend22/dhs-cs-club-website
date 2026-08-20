@@ -16,17 +16,19 @@ watch(drawerOpen, (isOpen) => {
 </script>
 
 <template>
-  <div :data-theme="theme" class="min-h-screen grid grid-cols-[246px_minmax(0,1fr)] max-[780px]:grid-cols-[minmax(0,1fr)] bg-bg text-tx font-mono antialiased">
+  <div :data-theme="theme" class="h-screen overflow-hidden grid grid-rows-[100vh] grid-cols-[246px_minmax(0,1fr)] max-[780px]:grid-cols-[minmax(0,1fr)] bg-bg text-tx font-mono antialiased">
     <NavSidebar />
 
-    <div class="min-w-0">
+    <div class="min-w-0 min-h-0 flex flex-col h-full">
       <TopBar />
 
-      <slot />
+      <div class="flex-1 min-h-0 overflow-y-auto">
+        <slot />
+      </div>
 
-      <footer class="border-t border-line py-4 px-[30px] flex justify-between gap-4 flex-wrap text-[10px] tracking-[.1em] uppercase text-mut">
-        <span>dhs cs club · dublin high school</span>
-        <span>hack club chapter</span>
+      <footer class="flex-none border-t border-line py-[0.9375rem] px-[1.875rem] flex justify-between gap-4 flex-wrap text-[0.625rem] tracking-[.1em]  text-mut">
+        <span>stay fly, dublin high</span>
+        <span>{{ $config.public.GIT_COMMIT }}</span>
       </footer>
     </div>
   </div>

@@ -16,9 +16,9 @@ const props = withDefaults(defineProps<{
 })
 
 const sizeClasses = {
-  md: 'text-[13px] px-[22px] py-[15px]',
+  md: 'text-[0.8125rem] px-[1.375rem] py-[0.9375rem]',
   sm: 'text-xs px-4 py-2.5 min-h-10',
-  icon: 'text-[15px] w-10 h-10 p-0 flex-none'
+  icon: 'text-[0.9375rem] w-10 h-10 p-0 flex-none'
 }
 
 const variantClasses = {

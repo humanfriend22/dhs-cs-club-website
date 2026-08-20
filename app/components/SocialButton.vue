@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import type { Component } from 'vue'
+
 const props = defineProps<{
-  icon: object
+  icon: Component
   label: string
   url?: string
   copyValue?: string
@@ -11,14 +13,14 @@ const copied = ref(false)
 const disabled = computed(() => !props.url && !props.copyValue)
 
 const rootClasses = computed(() => [
-  'group flex items-center gap-3 text-[13px] font-bold border border-line bg-bg text-ink py-[18px] px-[22px] no-underline transition duration-[160ms]',
+  'group flex items-center gap-3 text-[0.8125rem] font-bold border border-line bg-bg text-ink py-[0.75rem] px-[1.375rem] no-underline transition duration-[160ms]',
   disabled.value
     ? 'opacity-[.55] cursor-default'
     : 'cursor-pointer hover:bg-[var(--hover-color,var(--acc))] hover:border-[var(--hover-color,var(--acc))] hover:shadow-[0_0_0_1px_var(--hover-color,var(--acc))] hover:text-white'
 ])
 
 const iconClasses = computed(() => [
-  'text-acc flex-none transition-colors duration-[160ms]',
+  'text-acc flex-none w-[1.125rem] h-[1.125rem] transition-colors duration-[160ms]',
   !disabled.value && 'group-hover:text-white'
 ])
 
@@ -41,8 +43,8 @@ async function handleClick() {
     :type="!disabled && !url ? 'button' : undefined"
     @click="handleClick"
   >
-    <component :is="icon" :class="iconClasses" :size="18" />
+    <component :is="icon" :class="iconClasses" />
     <span>{{ copied ? 'Copied!' : label }}</span>
-    <span v-if="disabled" class="ml-auto text-[10px] tracking-[.1em] uppercase text-mut font-normal">coming soon</span>
+    <span v-if="disabled" class="ml-auto text-[0.625rem] tracking-[.1em] uppercase text-tx2 font-normal">coming soon</span>
   </component>
 </template>
